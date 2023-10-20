@@ -1,0 +1,57 @@
+{
+  "publisher": "CC",
+  "name": "clear-git",
+  "displayName": "clear-git",
+  "description": "一键清理git本地分支插件",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/cc-2018_admin/clean-git.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "icon": "icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cleanLocalBranch",
+        "title": "一键清理本地git"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "cleanLocalBranch",
+          "group": "group1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "cleanLocalBranch",
+          "group": "group1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "pnpm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.83.0",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "18.x",
+    "eslint": "^8.50.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2",
+    "@vscode/test-electron": "^2.3.4"
+  }
+}
