@@ -6,14 +6,17 @@ const path = require("path");
  * @param {{window:any}} vscode
  */
 function checkGitFile(url, vscode) {
-  let files = fs.readdirSync(url); //返回文件和子目录的数组
-  if (!files.includes(".git")) {
-    vscode.window.showErrorMessage("您还未初始化git,请先初始化");
-    return;
-  } else {
-    const gitFolderPath = path.join(url, ".git");
-    readRefsGitFile(gitFolderPath, vscode);
-  }
+  return new Promise((resolve, reject) => {
+    let files = fs.readdirSync(url); //返回文件和子目录的数组
+    if (!files.includes(".git")) {
+      vscode.window.showErrorMessage("您还未初始化git,请先初始化");
+      return reject("您还未初始化git,请先初始化");
+    } else {
+      const gitFolderPath = path.join(url, ".git");
+      readRefsGitFile(gitFolderPath, vscode);
+      resolve();
+    }
+  });
 }
 
 /**
@@ -79,7 +82,7 @@ function readGitFile(url, vscode) {
 
 /**
  * @param {string} filePath
- * @param {{ window:any }} vscode
+ * @param {{ window: any; commands?: any; }} vscode
  */
 function deleteGitFile(filePath, vscode) {
   if (!["master", "HEAD"].some((item) => filePath.endsWith(item))) {

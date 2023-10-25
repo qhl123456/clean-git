@@ -18,7 +18,12 @@ function activate(context) {
       } else {
         const projectRoot =
           vscode.workspace.workspaceFolders[0].uri.fsPath || "";
-        checkGitFile(projectRoot, vscode);
+        await checkGitFile(projectRoot, vscode);
+        // 在 checkGitFile 完成后执行 git pull 命令
+        const gitCommand = "git pull origin";
+        const terminal =
+          vscode.window.activeTerminal || vscode.window.createTerminal();
+        terminal.sendText(gitCommand);
       }
     }
   );
