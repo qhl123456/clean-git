@@ -1,65 +1,62 @@
-# hello-world README
+\# clean-git README
 
-This is the README for your extension "hello-world". After writing up a brief description, we recommend including the following sections.
 
-## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
+**这是一个帮你一键管理本地git分支的vscode插件,当你在开发时,可能会有需要迭代更新,迭代更新完毕后,有许多不需要的本地分支,不需要执行复杂的git branch -D 命令清除,只需点击一键即可清除**
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+**tips:如果需要自己开发请安装官方脚手架**
 
-## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
+插件开发官方示例库：https://github.com/microsoft/vscode-extension-samples
 
-This extension contributes the following settings:
+插件开发官方API文档：https://code.visualstudio.com/api/references/vscode-api
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 1.打开vscode,安装依赖
 
-## Known Issues
+> 执行npm install 之后按F5即可开发调试模式
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## 2.执行打包任务
 
-## Release Notes
+> ### 2.1首先需要安装 vsce工具
+>
+> ```
+> npm install -g @vscode/vsce
+> ```
+>
+> ### 2.2 执行命令 vsce package
 
-Users appreciate release notes as you update your extension.
+## 3.生成VSIX文件
 
-### 1.0.0
+> 执行第二步后会生成一个VSIX文件,如需发布插件可按照如下方式：
+>
+> 将插件发布到插件市场必须使用令牌方式发布，需要根据官方指南（
+> [https://code.visualstudio.com/api/working-with-extensions/publishing-extension](https://link.zhihu.com/?target=https%3A//code.visualstudio.com/api/working-with-extensions/publishing-extension)）先创建自己的组织，然后创建个人令牌并记住令牌。
+>
+> 这里我们采用安装到本地即可
 
-Initial release of ...
+## 4.安装到vscode
 
-### 1.0.1
+![image-20231023103058656](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231023103058656.png)
 
-Fixed issue #.
+选择我们刚刚生成的VSIX文件即可
 
-### 1.1.0
+## 5.切换到项目主分支或缺省分支
 
-Added features X, Y, and Z.
+切换到项目主分支或者默认分支,例如master,main等
 
----
+## 6.执行一键清除
 
-## Working with Markdown
+![image-20231023103157764](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231023103157764.png)
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+![image-20231023103252067](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20231023103252067.png)
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+切换分支后点击一键清理，这时会提示是否处于默认分支，选择是即可完成一键清理以及一键拉取最新代码
 
-## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
